@@ -10,3 +10,12 @@ class Place(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+
+class Image(models.Model):
+    title = models.ForeignKey(Place, on_delete=models.CASCADE, verbose_name='Локация')
+    image = models.ImageField(null=True, blank=False, verbose_name='Изображение')
+    number = models.IntegerField(default=1, verbose_name='Номер изображения')
+
+    def __str__(self) -> str:
+        return f'{self.number} {self.title}'
