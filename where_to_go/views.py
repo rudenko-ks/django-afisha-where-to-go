@@ -1,7 +1,24 @@
+from django.http import JsonResponse
 from django.template import loader
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from places.models import Place, Image
 from django.templatetags.static import static
+
+
+def get_map_place_details(request, place_id):
+    place = get_object_or_404(Place, id=place_id)
+    place_images = Image.objects.filter(title=place_id)
+    place_details = {
+        "title": place.title,
+        "imgs": [place_image.image.url for place_image in place_images],
+        "description_short": place.description_short,
+        "description_long": place.description_long,
+        "coordinates": {
+            "lng": place.longitude,
+            "lat": place.latitude
+        }
+    }
+    return JsonResponse(place_details, json_dumps_params={'ensure_ascii': False, 'indent': 4})
 
 
 def get_map_places() -> dict:

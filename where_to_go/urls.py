@@ -18,11 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from where_to_go.views import show_map
+from where_to_go.views import get_map_place_details, show_map
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', show_map),
+    path('places/<int:place_id>', get_map_place_details)
 ]
 
 if settings.DEBUG:
