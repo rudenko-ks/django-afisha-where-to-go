@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.template import loader
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 from places.models import Place, Image
 from django.templatetags.static import static
 
@@ -35,7 +36,7 @@ def get_map_places() -> dict:
             "properties": {
                 "title": place.title,
                 "placeId": place.id,
-                "detailsUrl": static('places/moscow_legends.json') if place.id == 1 else static('places/roofs24.json')
+                "detailsUrl": reverse('place-details', args=[place.id])
             }
         }
         map_places['features'].append(feature)
