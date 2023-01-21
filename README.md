@@ -3,16 +3,14 @@
 
 Front-end часть является частью учебного проекта и взята из [репозитория](https://github.com/devmanorg/where-to-go-frontend) Devman.
 
+## Пример работы сайта
+Посмотреть пример работы сайта можно посмотреть на [pythonanywhere.com](http://kawabanga.pythonanywhere.com/)
+
 ## Используемые библиотеки
 
 -   [Django](https://www.djangoproject.com/)  — фреймворк для веб-приложений.
 -   [django-admin-sortable2](https://django-admin-sortable2.readthedocs.io/en/latest/index.html)  — это приложение Django для сортировки объектов с помощью drag-and-drop в списках и интерфейсе администратора Django.
 -   [django-tinymce](https://github.com/jazzband/django-tinymce)  — это приложение Django, содержащее виджет для отображения поля формы в качестве WYSIWYG-редактора TinyMCE.
-
-
-## Пример работы сайта
-
-Посмотреть пример работы сайта можно посмотреть на [pythonanywhere.com](http://kawabanga.pythonanywhere.com/)
 
 
 ## Переменные окружения
@@ -75,10 +73,19 @@ python manage.py createsuperuser
 python3 manage.py runserver
 ```
 
+## Наполнение сайта контентом
+
+Чтобы загрузить на сайт больше данных необходимо выполнить команду `load_place` и в качестве аргумента передать ссылку на JSON файл.  Информация о новом месте будет добавлена в БД на сервер.
+
+```shell
+python manage.py load_place https://github.com/devmanorg/where-to-go-places/raw/master/places/Павильон%20«Космос»%20на%20ВДНХ.json
+```
+
 ## Использование
 
-- Главная страница располагается по адресу http://localhost:8000/ отображает карту с интересными местами в Москве.
-- Выбрав локацию на карте можно увидеть подробное описание с фотографиями.
+Главная страница располагается по адресу http://localhost:8000/ отображает карту с интересными местами в Москве.
+
+Выбрав локацию на карте можно увидеть подробное описание с фотографиями.
 
 ## Цели проекта
 
