@@ -8,7 +8,7 @@ from django.templatetags.static import static
 
 def get_map_place_details(request, place_id):
     place = get_object_or_404(Place, id=place_id)
-    place_images = Image.objects.filter(title=place_id)
+    place_images = Image.objects.filter(place=place_id)
     place_details = {
         "title": place.title,
         "imgs": [place_image.image.url for place_image in place_images],

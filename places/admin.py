@@ -10,7 +10,7 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     extra = 0
     readonly_fields = ('image_preview',)
     fields = (
-        'title',
+        'place',
         'image',
         'image_preview',
         'number',
