@@ -29,7 +29,7 @@ Front-end часть является частью учебного проект
     "imgs": [
         "https://kudago.com/media/images/place/d1.jpg",
         "https://kudago.com/media/images/place/d2.jpg",
-        "https://kudago.com/media/images/place/d3.jpg",
+        "https://kudago.com/media/images/place/d3.jpg"
     ],
     "description_short": "Хотите увидеть Москву с высоты птичьего полёта?",
     "description_long": "<p>Проект «Крыши24.рф» проводит экскурсии ...</p>",
@@ -61,16 +61,16 @@ pip install -r requirements.txt
     
 - Создайте файл базы данных и сразу примените все миграции командой:
 ```shell
-python manage py migrate
+python manage.py migrate
 ```
     
 - Создайте администратора сайта в базе данных:
 ```shell
 python manage.py createsuperuser
 ```
-- Запустите сервер командой  :
+- Запустите сервер командой:
 ```shell
-python3 manage.py runserver
+python manage.py runserver
 ```
 
 ## Наполнение сайта контентом
