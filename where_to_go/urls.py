@@ -23,7 +23,7 @@ from where_to_go.views import get_map_place_details, show_map
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', show_map),
-    path('places/<int:place_id>', get_map_place_details, name='place-details'),
+    path('places/<int:place_id>/', get_map_place_details, name='place-details'),
     path('tinymce/', include('tinymce.urls')),
 ]
 
