@@ -16,13 +16,15 @@ class Command(BaseCommand):
         place_info = self._get_place_info(place_info_url)
         coordinates = place_info['coordinates']
 
-        place, created = Place.objects.get_or_create(title=place_info['title'],
-                                                     longitude=coordinates['lng'],
-                                                     latitude=coordinates['lat'],
-                                                     defaults={
-                                                         'description_short': place_info['description_short'],
-                                                         'description_long': place_info['description_long']
-                                                     })
+        place, created = Place.objects.get_or_create(
+            title=place_info['title'],
+            longitude=coordinates['lng'],
+            latitude=coordinates['lat'],
+            defaults={
+                'description_short': place_info['description_short'],
+                'description_long': place_info['description_long']
+            },
+        )
         if created:
             for num, img_url in enumerate(place_info['imgs']):
                 img_name = img_url.split('/')[-1]
