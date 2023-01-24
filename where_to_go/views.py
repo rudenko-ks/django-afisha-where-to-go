@@ -41,5 +41,5 @@ def show_map(request):
         }
         map_places['features'].append(feature)
 
-    data = {'map_places': map_places}
-    return render(request, 'index.html', context=data)
+    map_places_collection = {'map_places': map_places}
+    return render(request, 'index.html', context=map_places_collection)
