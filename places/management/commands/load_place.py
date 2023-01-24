@@ -31,15 +31,12 @@ class Command(BaseCommand):
                 img_file = ContentFile(content=self._get_place_img(img_url), name=img_name)
                 Image.objects.get_or_create(place=place, number=num, image=img_file)
 
-    def _send_request(self, url: str) -> requests.Response:
+    def _get_place_info(self, url: str) -> dict:
         response = requests.get(url)
         response.raise_for_status()
-        return response
-
-    def _get_place_info(self, url: str) -> dict:
-        response = self._send_request(url)
         return response.json()
 
     def _get_place_img(self, url: str) -> bytes:
-        response = self._send_request(url)
+        response = requests.get(url)
+        response.raise_for_status()
         return response.content
