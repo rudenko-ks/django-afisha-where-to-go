@@ -21,12 +21,12 @@ class Command(BaseCommand):
             longitude=coordinates['lng'],
             latitude=coordinates['lat'],
             defaults={
-                'description_short': place_info['description_short'],
-                'description_long': place_info['description_long']
+                'description_short': place_info.get('description_short', ''),
+                'description_long': place_info.get('description_long', '')
             },
         )
         if created:
-            for num, img_url in enumerate(place_info['imgs']):
+            for num, img_url in enumerate(place_info.get('imgs')):
                 img_name = img_url.split('/')[-1]
                 img_file = ContentFile(content=self._get_place_img(img_url), name=img_name)
                 Image.objects.get_or_create(place=place, number=num, image=img_file)
