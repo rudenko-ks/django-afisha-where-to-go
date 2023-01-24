@@ -12,7 +12,6 @@ class Command(BaseCommand):
         parser.add_argument('load_place', type=str, help='URL to JSON file with place description.')
 
     def handle(self, *args, **options):
-
         place_info_url = options['load_place']
         place_info = self._get_place_info(place_info_url)
         coordinates = place_info['coordinates']
