@@ -1,9 +1,7 @@
 from django.http import JsonResponse
-from django.template import loader
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
-from places.models import Place, Image
-from django.templatetags.static import static
+from places.models import Place
 
 
 def get_map_place_details(request, place_id):
