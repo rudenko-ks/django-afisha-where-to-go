@@ -28,7 +28,7 @@ class Command(BaseCommand):
             },
         )
         if created:
-            for num, img_url in enumerate(place_info.get('imgs')):
+            for num, img_url in enumerate(place_info.get('imgs', [])):
                 response = requests.get(img_url)
                 response.raise_for_status()
                 img_name = img_url.split('/')[-1]
