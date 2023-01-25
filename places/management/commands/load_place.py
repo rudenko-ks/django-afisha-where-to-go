@@ -13,7 +13,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         place_info_url = options['load_place']
-        place_info = self._get_place_info(place_info_url)
+        response = requests.get(place_info_url)
+        response.raise_for_status()
+        place_info = response.json()
         coordinates = place_info['coordinates']
 
         place, created = Place.objects.get_or_create(
@@ -27,16 +29,8 @@ class Command(BaseCommand):
         )
         if created:
             for num, img_url in enumerate(place_info.get('imgs')):
+                response = requests.get(img_url)
+                response.raise_for_status()
                 img_name = img_url.split('/')[-1]
-                img_file = ContentFile(content=self._get_place_img(img_url), name=img_name)
+                img_file = ContentFile(content=response.content, name=img_name)
                 Image.objects.get_or_create(place=place, number=num, image=img_file)
-
-    def _get_place_info(self, url: str) -> dict:
-        response = requests.get(url)
-        response.raise_for_status()
-        return response.json()
-
-    def _get_place_img(self, url: str) -> bytes:
-        response = requests.get(url)
-        response.raise_for_status()
-        return response.content
